@@ -1,0 +1,38 @@
+# ---- PPE Detector: never push these ----
+# Reports & documents (kept local)
+/reports/
+
+# Data blobs (regenerable via src.data.*)
+data/raw/
+data/processed/
+data/violations/
+data/*.db
+
+# Heavy / regenerable weights
+models/smoke/
+models/pretrained/
+models/checkpoints/yolov8_final/
+**/last.pt
+
+# Colab / dataset archives
+*.zip
+colab_out/
+
+# Python / test / OS noise
+__pycache__/
+*.pyc
+.pytest_cache/
+.hypothesis/
+.venv/
+venv/
+.env
+.streamlit/secrets.toml
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temp notes
+scripts/survey_out.txt

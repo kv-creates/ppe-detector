@@ -1,0 +1,21 @@
+# Application configuration
+api:
+  host: 127.0.0.1
+  port: 8000
+ui:
+  host: 127.0.0.1
+  port: 8501
+model:
+  # resolved in order: colab-trained final > smoke baseline > coco placeholder
+  candidates:
+    - models/checkpoints/yolov8_final/weights/best.pt
+    - models/checkpoints/yolov8m_ppe/weights/best.pt
+    - models/checkpoints/yolov8s_ppe/weights/best.pt
+    - models/checkpoints/yolov8n_ppe/weights/best.pt
+  conf_threshold: 0.30
+  imgsz: 640
+database:
+  url: sqlite:///data/violations.db
+violation_classes:
+  - no-helmet
+  - no-vest

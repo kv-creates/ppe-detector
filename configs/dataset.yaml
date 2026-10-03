@@ -1,0 +1,32 @@
+# Dataset configuration (paths relative to repo root: ppe-detector/)
+raw_dir: data/raw
+processed_dir: data/processed
+images_dir: data/processed/images
+labels_dir: data/processed/labels
+metadata_csv: data/processed/metadata.csv
+yaml_out: data/processed/dataset.yaml
+
+split_ratios:
+  train: 0.70
+  val: 0.15
+  test: 0.15
+seed: 42
+
+# 6-class unified taxonomy (all boxes trace to real annotations)
+classes:
+  - person
+  - helmet
+  - vest
+  - no-helmet
+  - no-vest
+  - boots
+
+clean:
+  min_size: 320          # drop images with min(w,h) below this
+  phash_threshold: 5     # Hamming distance threshold for dedup
+
+real_sources:
+  - construction_ppe   # Ultralytics Construction-PPE (primary, YOLO)
+  - shwd               # SHWD demo frames (background)
+  - byod               # user-supplied data/raw/byod
+min_images: 50
