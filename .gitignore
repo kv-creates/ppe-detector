@@ -36,3 +36,6 @@ Thumbs.db
 
 # Temp notes
 scripts/survey_out.txt
+
+# stray ultralytics downloads at repo root
+/*.pt
