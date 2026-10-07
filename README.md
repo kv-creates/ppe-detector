@@ -209,6 +209,11 @@ status bar). Pages:
 - **Video Monitor** — upload a site MP4 (or run the demo reel), sampled
   scoring with progress bar, annotated MP4 playback/download, cooldown-guarded
   Telegram photo alerts (`TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID`).
+
+Alert policy is red-zone-only by default (overhead-hazard area): yellow/green
+violations log silently. Override per call or with
+`TELEGRAM_ZONES="red,yellow"`. One alert per camera and violation class every
+2 minutes (`telegram.cooldown_s`) so incident bursts do not spam the chat.
 - **Incident Log** — SQLite-backed table, camera/class filters, CSV export.
 - **Analytics** — class distribution, zone heatmap, latency histogram
   (Plotly, Win7 theme).
