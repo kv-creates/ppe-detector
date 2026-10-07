@@ -77,6 +77,22 @@ if st.button("Run Detection", disabled=(img_bgr is None) or not ok) or (
         if resp["violation"]:
             st.markdown("<div class='win7-alert red'>⚠ <b>PPE VIOLATION DETECTED</b> — "
                         "supervisor notified, incident logged.</div>", unsafe_allow_html=True)
+            from src.utils import telegram as _tg
+            red = [d for d in resp["detections"]
+                   if d["class_name"] in ("no-helmet", "no-vest")
+                   and d["zone"] == "red"]
+            if red and _tg.configured():
+                import cv2 as _cv2
+                top = max(red, key=lambda d: d["conf"])
+                _, _buf = _cv2.imencode(".jpg", _cv2.cvtColor(overlay, _cv2.COLOR_RGB2BGR))
+                sent = _tg.send_violation_alert(
+                    camera_id, top["class_name"], top["conf"], "red", 0,
+                    snapshot=_buf.tobytes())
+                st.markdown("Telegram photo alert: **%s**" % ("sent" if sent else
+                            "suppressed (cooldown) or failed"))
+            elif red:
+                st.markdown("Telegram: not configured — set TELEGRAM_BOT_TOKEN / "
+                            "TELEGRAM_CHAT_ID to message alerts.")
         else:
             st.markdown("<div class='win7-alert'>✔ No violation — site compliant.</div>",
                         unsafe_allow_html=True)

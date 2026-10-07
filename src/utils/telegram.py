@@ -106,10 +106,12 @@ def send_violation_alert(camera_id: str, class_name: str, conf: float,
     if now - _last_sent.get(key, 0) < s["cooldown_s"]:
         return False
     _last_sent[key] = now
+    import datetime as _dt
+    stamp = _dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     zone_word = {"red": "RED zone (overhead hazard area)",
                  "yellow": "YELLOW zone (active workface)",
                  "green": "GREEN zone (walkway)"}.get(zone, zone)
-    text = (f"<b>PPE VIOLATION</b>\nCamera: {camera_id}\n"
+    text = (f"<b>PPE VIOLATION</b> {stamp}\nCamera: {camera_id}\n"
             f"Missing gear: <b>{class_name}</b> ({conf:.0%})\n"
             f"Area: {zone_word}\nFrame: {frame_no}")
     if snapshot:
