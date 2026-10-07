@@ -19,6 +19,7 @@ def screenshot_pages(base: str = "http://127.0.0.1:8501") -> list[str]:
 
     pages = [
         ("ui_live_view", f"{base}/Live_View"),
+        ("ui_video_monitor", f"{base}/Video_Monitor"),
         ("ui_incident_log", f"{base}/Incident_Log"),
         ("ui_analytics", f"{base}/Analytics"),
         ("ui_kpi_report", f"{base}/KPI_Report"),

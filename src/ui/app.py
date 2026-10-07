@@ -16,6 +16,7 @@ with st.sidebar:
     st.markdown("### PPE Sentinel")
     st.markdown("Navigation")
     st.page_link("pages/1_Live_View.py", label="Live View", icon="📹")
+    st.page_link("pages/5_Video_Monitor.py", label="Video Monitor", icon="🎬")
     st.page_link("pages/2_Incident_Log.py", label="Incident Log", icon="📋")
     st.page_link("pages/3_Analytics.py", label="Analytics", icon="📊")
     st.page_link("pages/4_KPI_Report.py", label="KPI Report", icon="📈")
@@ -24,7 +25,7 @@ with st.sidebar:
     st.markdown(f"API status: **{':green[connected]' if ok else ':red[offline]'}**")
 
 win7_window("PPE Sentinel — Control Panel", "◉")
-win7_tab_strip("Home", ["Home", "Live View", "Incident Log", "Analytics", "KPI Report"])
+win7_tab_strip("Home", ["Home", "Live View", "Video Monitor", "Incident Log", "Analytics", "KPI Report"])
 win7_panel_open()
 
 st.markdown("### Construction Site PPE Non-Compliance Detector")

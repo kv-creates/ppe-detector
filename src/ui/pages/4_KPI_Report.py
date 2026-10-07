@@ -13,7 +13,7 @@ st.set_page_config(page_title="PPE Sentinel — KPI Report", layout="wide")
 inject_css()
 
 win7_window("PPE Sentinel — KPI Report", "📈")
-win7_tab_strip("KPI Report", ["Home", "Live View", "Incident Log", "Analytics", "KPI Report"])
+win7_tab_strip("KPI Report", ["Home", "Live View", "Video Monitor", "Incident Log", "Analytics", "KPI Report"])
 win7_panel_open()
 
 kpis = {}

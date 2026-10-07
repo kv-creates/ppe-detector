@@ -206,6 +206,9 @@ status bar). Pages:
 - **Control Panel** (`app.py`) — overview, model/dataset status, navigation.
 - **Live View** — sample/upload/webcam input, camera picker, confidence
   slider, overlay frame, Safe/Unsafe/Compliance counters, violation alert.
+- **Video Monitor** — upload a site MP4 (or run the demo reel), sampled
+  scoring with progress bar, annotated MP4 playback/download, cooldown-guarded
+  Telegram photo alerts (`TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID`).
 - **Incident Log** — SQLite-backed table, camera/class filters, CSV export.
 - **Analytics** — class distribution, zone heatmap, latency histogram
   (Plotly, Win7 theme).

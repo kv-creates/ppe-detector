@@ -15,7 +15,7 @@ st.set_page_config(page_title="PPE Sentinel — Analytics", layout="wide")
 inject_css()
 
 win7_window("PPE Sentinel — Analytics", "📊")
-win7_tab_strip("Analytics", ["Home", "Live View", "Incident Log", "Analytics", "KPI Report"])
+win7_tab_strip("Analytics", ["Home", "Live View", "Video Monitor", "Incident Log", "Analytics", "KPI Report"])
 win7_panel_open()
 
 WIN7 = {"paper_bgcolor": "white", "plot_bgcolor": "white",

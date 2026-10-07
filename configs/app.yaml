@@ -19,3 +19,9 @@ database:
 violation_classes:
   - no-helmet
   - no-vest
+telegram:
+  # Prefer env vars TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID (or Streamlit
+  # secrets on Cloud). Values here are fallback only — never commit secrets.
+  bot_token: ""
+  chat_id: ""
+  cooldown_s: 120

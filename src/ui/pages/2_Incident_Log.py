@@ -13,7 +13,7 @@ st.set_page_config(page_title="PPE Sentinel — Incident Log", layout="wide")
 inject_css()
 
 win7_window("PPE Sentinel — Incident Log", "📋")
-win7_tab_strip("Incident Log", ["Home", "Live View", "Incident Log", "Analytics", "KPI Report"])
+win7_tab_strip("Incident Log", ["Home", "Live View", "Video Monitor", "Incident Log", "Analytics", "KPI Report"])
 win7_panel_open()
 
 

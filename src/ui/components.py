@@ -5,7 +5,7 @@ import streamlit as st
 
 
 def inject_css() -> None:
-    with open("src/ui/win7.css") as fh:
+    with open("src/ui/win7.css", encoding="utf-8") as fh:
         st.markdown(f"<style>{fh.read()}</style>", unsafe_allow_html=True)
 
 
@@ -48,6 +48,10 @@ def win7_status_bar(text_left: str, text_right: str) -> None:
         f"<span>{text_right}</span></div>",
         unsafe_allow_html=True,
     )
+
+
+NAV_TABS = ["Home", "Live View", "Video Monitor", "Incident Log",
+            "Analytics", "KPI Report"]
 
 
 def api_health() -> bool:

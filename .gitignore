@@ -39,3 +39,7 @@ scripts/survey_out.txt
 
 # stray ultralytics downloads at repo root
 /*.pt
+
+# docx surgery scratch
+scripts/docx_fix/
+t_*.mp4
