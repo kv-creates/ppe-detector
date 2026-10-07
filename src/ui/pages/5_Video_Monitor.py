@@ -37,6 +37,10 @@ with c2:
     sample_every = st.slider("Analyse every Nth frame", 1, 15, 5)
 notify = st.checkbox("Send Telegram alerts on violation", value=True,
                      disabled=not tg_ok)
+alert_zones = st.multiselect("Alert on zones", ["red", "yellow", "green"],
+                             default=["red"],
+                             help="Red = overhead-hazard area (recommended). "
+                                  "Alerts fire only for violations in these zones.")
 
 video_path, cleanup = None, None
 if src == "Sample site reel":
@@ -61,6 +65,7 @@ if st.button("Process Video", disabled=video_path is None):
             summary = process_video(
                 video_path, camera_id=camera_id, conf=conf,
                 sample_every=sample_every, notify=notify and tg_ok,
+                alert_zones=alert_zones,
                 progress_cb=lambda f: bar.progress(min(1.0, f), text=f"Scoring... {f:.0%}"))
         except Exception as exc:  # noqa: BLE001
             st.error(f"Processing failed: {exc}")

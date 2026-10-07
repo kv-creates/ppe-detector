@@ -20,7 +20,8 @@ log = logging.getLogger("video")
 
 def process_video(path: str, camera_id: str = "cam-01", conf: float = 0.30,
                   sample_every: int = 5, out_path: str | None = None,
-                  progress_cb=None, notify: bool = True) -> dict:
+                  progress_cb=None, notify: bool = True,
+                  alert_zones: list[str] | None = None) -> dict:
     from src.api import db
     from src.inference.predictor import VIOLATIONS, PPEPredictor
     from src.inference.zones import get_zone
@@ -89,7 +90,8 @@ def process_video(path: str, camera_id: str = "cam-01", conf: float = 0.30,
                     _, buf = cv2.imencode(".jpg", frame)
                     if telegram.send_violation_alert(
                             camera_id, d["class_name"], d["conf"], d["zone"],
-                            frames_seen, snapshot=buf.tobytes()):
+                            frames_seen, snapshot=buf.tobytes(),
+                            allowed_zones=alert_zones):
                         alerts_sent += 1
             # overlay + banner
             for d in out["detections"]:

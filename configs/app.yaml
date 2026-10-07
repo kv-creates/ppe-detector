@@ -25,3 +25,7 @@ telegram:
   bot_token: ""
   chat_id: ""
   cooldown_s: 120
+  # Alert only on these hazard zones (red = overhead-hazard area).
+  # Override with TELEGRAM_ZONES="red,yellow".
+  zones:
+    - red

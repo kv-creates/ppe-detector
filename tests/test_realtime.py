@@ -32,6 +32,23 @@ def test_telegram_cooldown_and_format():
     assert telegram.send_violation_alert("cam-01", "no-vest", 0.8, "red", 11) is False
 
 
+def test_telegram_zone_filter():
+    import sys
+    sys.path.insert(0, ROOT)
+    from src.utils import telegram
+    telegram.load_settings = lambda: {"bot_token": "t", "chat_id": "c",
+                                      "cooldown_s": 0, "zones": ["red"]}
+    calls = []
+    telegram._call = lambda method, payload, files=None: calls.append(
+        (method, payload.get("text", "")[:40])) or True
+    assert telegram.send_violation_alert("cam-01", "no-helmet", 0.9, "red", 1) is True
+    assert telegram.send_violation_alert("cam-01", "no-helmet", 0.9, "yellow", 2) is False
+    assert telegram.send_violation_alert("cam-01", "no-helmet", 0.9, "green", 3) is False
+    # explicit override beats config
+    assert telegram.send_violation_alert("cam-01", "no-helmet", 0.9, "yellow", 4,
+                                         allowed_zones=["yellow"]) is True
+
+
 def test_video_pipeline_smoke():
     import sys
     sys.path.insert(0, ROOT)
