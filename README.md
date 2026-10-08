@@ -239,8 +239,9 @@ reported honestly.
 python -m pytest tests/ -v
 ```
 
-13 tests cover the dataset manifest/split/label format, model loading and
-inference output, live API endpoints, and UI module/CSS checks.
+17 tests cover the dataset manifest/split/label format, model loading and
+inference output, live API endpoints, Telegram config/cooldown/zone rules,
+video pipeline smoke, and UI module/CSS checks.
 
 ## Configuration
 
